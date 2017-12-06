@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getBooks } from '../../ducks/users';
-import Third from './Third/Third';
+import {Third} from './Third/Third';
 import axios from 'axios';
 
 class Main extends Component {
@@ -46,7 +46,7 @@ class Main extends Component {
             <div>
                 <Link to='/second'>Second</Link>
                 <Link to='/third'>Third</Link>
-                <Third />
+                <Third hi='hi' />
                 <div onClick={() => this.addBook()}>
                     add book
                     </div>

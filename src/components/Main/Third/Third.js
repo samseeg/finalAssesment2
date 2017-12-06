@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-class Third extends Component {
-    render() {
+
+export const Third = (props) => {
+    console.log(props)
         return (
             <div>
                 <Link to='/'>First</Link>
                 <Link to='/second'>Second</Link>
-                </div>
+                {props.hi}
+            </div>
         )
-    }
 }
-
-export default Third;
