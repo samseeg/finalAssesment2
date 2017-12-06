@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {getBooks} from '../../ducks/users';
+import Third from './Third/Third';
 
 class Main extends Component {
 
@@ -16,6 +17,7 @@ class Main extends Component {
             <div>
                 <Link to='/second'>Second</Link>
                 <Link to='/third'>Third</Link>
+                <Third/>
                 {this.props.match.path}
                 {this.props.books.map((item, i) => {
                     return (
