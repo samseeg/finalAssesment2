@@ -81,9 +81,9 @@ massive(process.env.CONNECTION_STRING).then(db => {
 const controller = require('./controller/controller');
 
 app.get('/books', controller.getBooks);
-app.put('/update');
+app.put('/update', controller.updateBook);
 app.post('/add', controller.addBook);
-app.delete('/delete/:id');
+app.delete('/delete/:id', controller.deleteBook);
 
 
 

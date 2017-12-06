@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {getBooks} from '../../ducks/users';
+import { getBooks } from '../../ducks/users';
 import Third from './Third/Third';
+import axios from 'axios';
 
 class Main extends Component {
 
@@ -11,8 +12,31 @@ class Main extends Component {
         this.props.getBooks()
     }
 
-    click() {
-        alert('hello')
+    addBook() {
+        axios.post('/add', {
+            title: 'the walking drum',
+            author: 'louis lamour',
+            genre: 'adventure'
+        })
+            .then(response => {
+                this.props.getBooks()
+            })
+    }
+
+    updateBook() {
+        axios.put('/update', {
+            title: 'the last of the breed'
+        })
+            .then(response => {
+                this.props.getBooks()
+            })
+    }
+
+    deleteBook(id) {
+        axios.delete(`/delete/:${id}`)
+        .then(response => {
+            this.props.getBooks()
+        })
     }
 
     render() {
@@ -22,24 +46,31 @@ class Main extends Component {
             <div>
                 <Link to='/second'>Second</Link>
                 <Link to='/third'>Third</Link>
-                <Third/>
+                <Third />
+                <div onClick={() => this.addBook()}>
+                    add book
+                    </div>
+                <div onClick={() => this.updateBook()}>
+                    update books
+                        </div>
                 {this.props.match.path}
                 {this.props.books.map((item, i) => {
+                    console.log('item info', item.id)
                     return (
-                        <div key={i}>
-                        {item.title}
-                            </div>
+                        <div key={i} onClick={() => this.deleteBook(item.id)}>
+                            {item.title}
+                        </div>
                     )
                 })}
-                </div>
+            </div>
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-    books: state.books
+        books: state.books
     }
 }
 
-export default connect(mapStateToProps, {getBooks})(Main);
+export default connect(mapStateToProps, { getBooks })(Main);
