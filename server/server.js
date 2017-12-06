@@ -16,9 +16,9 @@ app.use(session({
     saveUninitialized: true
 }))
 
-//     //passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+    //passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db);

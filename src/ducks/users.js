@@ -21,9 +21,9 @@ export function getUserInfo() {
 
 export function getBooks() {
     const bookData = axios.get('/books')
-    .then(res => {
-        return res.data
-    })
+        .then(res => {
+            return res.data
+        })
     return {
         type: GET_BOOKS,
         payload: bookData
@@ -38,7 +38,8 @@ export default function reducer(state = initialState, action) {
             // console.log(this.state.user)
             return Object.assign({}, state, { user: action.payload })
 
-            case GET_BOOKS + '_FULFILLED':
+        case GET_BOOKS + '_FULFILLED':
+        console.log("users test", action.payload)
             return Object.assign({}, state, { books: action.payload })
 
         default:
