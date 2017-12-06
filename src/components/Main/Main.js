@@ -11,8 +11,13 @@ class Main extends Component {
         this.props.getBooks()
     }
 
+    click() {
+        alert('hello')
+    }
+
     render() {
-        console.log('main test', this.props.books)
+        // console.log('main test', this.props.books)
+        console.log(this.props.match)
         return (
             <div>
                 <Link to='/second'>Second</Link>
