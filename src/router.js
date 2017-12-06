@@ -8,6 +8,6 @@ export default (
     <Switch>
         <Route exact path='/' component={Main}/>
         <Route path='/second' component={Second}/>
-        <Route path='/third' component={Third}/>
+        <Route path='/third' render={() => (<Third />)}/>
     </Switch>
 )
