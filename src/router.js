@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Main from './components/Main/Main.js';
 import Second from './components/Main/Second/Second.js';
-import Third from './components/Main/Third/Third.js';
+import {Third} from './components/Main/Third/Third.js';
 
 export default (
     <Switch>
